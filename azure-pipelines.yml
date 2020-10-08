@@ -3,12 +3,11 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 parameters:
-  - name: location
-    displayName: Select Location
+  - name: tag
+    displayName: Select tag
     type: string
     default:
     values:
-    - 
 
 
 trigger:
