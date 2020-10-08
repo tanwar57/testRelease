@@ -8,8 +8,7 @@ parameters:
     type: string
     default:
     values:
-
-
+    - 
 trigger:
 - none
 
