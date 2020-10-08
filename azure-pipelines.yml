@@ -2,6 +2,11 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+parameters:
+  - name: location
+    displayName: Select Location
+    type: string
+    values:
 
 trigger:
 - none
@@ -18,15 +23,20 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+- task: file-creator@5
+  inputs:
+    fileoverwrite: true
+    skipempty: true
+    filepath: 'tag.vars'
+    filecontent: |
+     tag = "${{ parameters.tag }}"
+    endWithNewLine: true
+
 - task: CopyFiles@2
   inputs:
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-# - task: PublishPipelineArtifact@1
-#   inputs:
-#     targetPath: '$(Pipeline.Workspace)'
-#     artifact: 'drop'
-#     publishLocation: 'pipeline'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
