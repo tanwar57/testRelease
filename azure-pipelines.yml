@@ -22,8 +22,13 @@ steps:
   inputs:
     Contents: '**'
     TargetFolder: '$(Pipeline.Workspace)'
-- task: PublishPipelineArtifact@1
+# - task: PublishPipelineArtifact@1
+#   inputs:
+#     targetPath: '$(Pipeline.Workspace)'
+#     artifact: 'drop'
+#     publishLocation: 'pipeline'
+- task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'drop'
-    publishLocation: 'pipeline'
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
