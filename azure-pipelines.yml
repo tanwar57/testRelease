@@ -6,7 +6,10 @@ parameters:
   - name: location
     displayName: Select Location
     type: string
+    default:
     values:
+    - 
+
 
 trigger:
 - none
