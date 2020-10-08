@@ -18,8 +18,12 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: CopyPublishBuildArtifacts@1
+- task: CopyFiles@2
   inputs:
     Contents: '**'
-    ArtifactName: 'drop'
-    ArtifactType: 'FilePath'
+    TargetFolder: '$(Pipeline.Workspace)'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'drop'
+    publishLocation: 'pipeline'
