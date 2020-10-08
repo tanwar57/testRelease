@@ -7,8 +7,7 @@ parameters:
     displayName: Select tag
     type: string
     default:
-    values:
-    - 1.4
+
 trigger:
 - none
 
